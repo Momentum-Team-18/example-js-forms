@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+    />
+    <!-- gives us access to the bulma css  -->
+    <script src="script.js" defer></script>
+    <title>Jokes</title>
+  </head>
+  <body>
+    <div class="container pl-5">
+      <h1 class="block title is-2">Get A Parent Joke</h1>
+      <form class="block" action="" id="search-form">
+        <div class="search-field block">
+          <label for="search-field">Search Term</label>
+          <!-- for, name, and id attributes should have the same value -->
+          <input
+            type="text"
+            name="search-field"
+            id="search-field"
+            class="block"
+            required
+          />
+          <!-- required argument means form cannot be submitted if this field has no content -->
+        </div>
+        <button class="button is-success" type="submit">Submit</button>
+      </form>
+      <div class="block title is-5">You Got Jokes</div>
+      <div id="joke-container"></div>
+    </div>
+  </body>
+</html>
