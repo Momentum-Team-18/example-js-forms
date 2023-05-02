@@ -3,11 +3,15 @@ console.log(searchForm);
 let searchInput = document.querySelector("#search-field");
 let searchBaseUrl = "https://icanhazdadjoke.com/search?term=";
 let jokeContainer = document.querySelector("#joke-container");
+let clearButton = document.querySelector(".is-danger");
+let searchTerm;
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log(searchInput.value);
-  let searchUrl = `${searchBaseUrl}${searchInput.value}`;
+  searchTerm = searchInput.value;
+  searchForm.reset();
+  jokeContainer.replaceChildren();
+  let searchUrl = `${searchBaseUrl}${searchTerm}`;
   console.log(searchUrl);
   fetch(searchUrl, {
     method: "GET",
@@ -20,6 +24,8 @@ searchForm.addEventListener("submit", (event) => {
     })
     .then((data) => {
       console.log(data.results);
+      topic.innerText += searchTerm;
+
       for (let result of data.results) {
         let jokeEl = document.createElement("div");
         jokeEl.classList.add("box");
@@ -27,4 +33,9 @@ searchForm.addEventListener("submit", (event) => {
         jokeContainer.appendChild(jokeEl);
       }
     });
+});
+
+clearButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  jokeContainer.replaceChildren();
 });
